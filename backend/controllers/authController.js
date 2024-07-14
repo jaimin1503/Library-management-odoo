@@ -106,15 +106,16 @@ export const login = async (req, res) => {
       });
     }
 
-    // Generate JWT token and Compare Password
-    if (await bcrypt.compare(password, user.password)) {
-      const token = jwt.sign(
-        { email: user.email, id: user._id, accountType: user.accountType },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: "24h",
-        }
-      );
+		// Generate JWT token and Compare Password
+		if (await bcrypt.compare(password, user.password)) {
+			const token = jwt.sign(
+				{ email: user.email, id: user._id, accountType: user.role },
+				process.env.JWT_SECRET,
+				{
+					expiresIn: "24h",
+				}
+			);
+
 
       // Save token to user document in database
       user.token = token;
