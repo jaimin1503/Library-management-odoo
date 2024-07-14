@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { setUser } from "../redux/slices/authSlice";
+import { setUser } from "../redux/slices/authSlice.js";
 import "./Styles.css";
 import Navbar from "../components/Navbar";
 import { useDispatch } from "react-redux";
@@ -29,8 +29,11 @@ export default function Login() {
         formData,
         { withCredentials: true }
       );
+
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
+        dispatch(setUser(response.data.user));
+        console.log(response.data.user);
         navigate("/books");
       } else {
         setError("An error occurred. Please try again later.");
@@ -39,7 +42,6 @@ export default function Login() {
           position: "top-right",
         });
       }
-      dispatch(setUser(res.data.user));
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);

@@ -8,7 +8,10 @@ import { jwtDecode } from "jwt-decode";
 
 const Sidebar2 = () => {
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
+
+  const decodedUser = jwtDecode(localStorage.getItem("token"));
+
+  console.log(decodedUser.accountType);
 
   return (
     <div className=" w-56 bg-pure-greys-5 h-screen hidden md:flex">
@@ -26,9 +29,9 @@ const Sidebar2 = () => {
           <h1 className=" my-4 text-lg py-2 px-4 w-44 flex justify-center bg-pure-greys-50 text-black rounded-xl cursor-pointer">
             My Books
           </h1>
-          {user?.accoutType == "Admin" ? (
+          {decodedUser?.accountType == "Admin" ? (
             <h1 className=" my-4 text-lg py-2 px-4 w-44 flex justify-center bg-pure-greys-50 text-black rounded-xl cursor-pointer">
-              Add Book
+              <Link to={"/addbook"}>Add Book</Link>
             </h1>
           ) : (
             <></>
