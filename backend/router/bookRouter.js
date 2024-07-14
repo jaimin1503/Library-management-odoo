@@ -8,7 +8,5 @@ bookRouter.route("/addBook").post(addBook);
 bookRouter.route("/getBooks").get(fatchBooks);
 
 bookRouter.route("/getBook/:id").get(fatchBook);
-bookRouter.route("/updateBook/:id").put(updateBook);
-bookRouter.route("/deleteBook/:id").delete(deleteBook);
 //Raj
 export { bookRouter };

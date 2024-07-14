@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { setLoading, setSignupData } from "../redux/slices/authSlice";
 import { signUp } from "../utils/auth";
 import Navbar from "../components/Navbar";
+import emailjs from 'emailjs-com';
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -17,13 +18,43 @@ export default function Signup() {
     confirmPassword: "",
     location: "",
   });
+  const [otpVarify, setOtpVarify] = useState(false);
   const [error, setError] = useState("");
+  const [otp, setOTP] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const getOTP = () => {
+    const optTemp = Math.floor(100000 + Math.random() * 900000).toString();
+    setOTP(optTemp);
+    console.log(optTemp);
+    console.log("Inside genOTP");
+
+    emailjs.send('service_47v6yhp', 'template_bs5tdjk',{
+      name: formData.firstName,
+      otp: optTemp,
+      to_email: formData.email,
+    }, 'Lx9Z4TNqPKTQ1oiUO')
+    .then((response) => {
+      console.log('Email sent successfully!', response);
+    })
+    .catch((error) => {
+      console.error('Email could not be sent:', error);
+    });
+  }
+
+  const varifyOTP = (e) => {
+    e.preventDefault();
+
+    if(e.target.value === otp)
+    {
+      setOtpVarify(true);
+    }
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -89,14 +120,6 @@ export default function Signup() {
               onChange={handleChange}
               name="password"
               value={formData.password || ""}
-            />
-            <input
-              type="password"
-              className="input-field  "
-              placeholder="Confirm Password"
-              onChange={handleChange}
-              name="confirmPassword"
-              value={formData.confirmPassword || ""}
             />
             <button type="submit" className="submit-button hover:bg-blue-600">
               Continue
