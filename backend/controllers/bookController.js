@@ -43,3 +43,39 @@ export const addBook = asyncHandler(async(req, res) => {
         // res.status(200).json(patient);
     });
 })
+
+export const fatchBooks = async (req, res) => {
+    try {
+        const books = await Book.find({}, 'BookName Thumbnail Title Author Genre Quantity BorrowedBy');
+
+        const result = books.map(book => ({
+            Id : book._id,
+            BookName: book.BookName,
+            Thumbnail: book.Thumbnail,
+            Title: book.Title,
+            Author: book.Author,
+            Genre: book.Genre,
+            Remain : book.Quantity - book.BorrowedBy.length
+        }));
+
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const fatchBook = async (req, res) => {
+    const { id } = req.params; // Assuming the ID is passed as a route parameter
+
+    try {
+        const book = await Book.findById(id);
+
+        if (!book) {
+            return res.status(404).json({ message: 'Book not found' });
+        }
+
+        res.json(book);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
