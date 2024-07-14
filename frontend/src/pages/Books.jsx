@@ -25,16 +25,18 @@ export default function Books({ category }) {
       <Navbar />
       <div className=" flex">
         <Sidebar2 />
-        <div className=" text-4xl font-medium p-4">Trendings</div>
-        <div className="container p-4">
-          {books.length > 0 &&
-            books.map((book) => (
-              <div key={book._id}>
-                <Link to={`/book/${book?.Id}`}>
-                  <BookCard book={book} />
-                </Link>
-              </div>
-            ))}
+        <div className=" flex flex-col w-full">
+          <div className=" text-4xl font-medium p-4">Trendings</div>
+          <div className="container p-4">
+            {books.length > 0 &&
+              books.map((book) => (
+                <div key={book._id}>
+                  <Link to={`/book/${book?.Id}`}>
+                    <BookCard book={book} />
+                  </Link>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </div>
