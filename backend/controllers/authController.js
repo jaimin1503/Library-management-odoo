@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import User from "../models/userSchema.js";
 import jwt from "jsonwebtoken";
-import otpGenerator from "otp-generator";
 // const mailSender = require("../utils/mailSender");
 // const { passwordUpdated } = require("../mail/templates/passwordUpdate");
 import Profile from "../models/profileScema.js";

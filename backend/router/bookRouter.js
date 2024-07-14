@@ -8,12 +8,12 @@ import {auth,isUser } from "../middlewares/authMiddleware.js";
 bookRouter.route("/addBook").post(addBook);
 
 bookRouter.route("/getBooks").get(fatchBooks);
-
 bookRouter.route("/getBook/:id").get(fatchBook);
 bookRouter.route("/updateBook/:id").put(updateBook);
 bookRouter.route("/deleteBook/:id").delete(deleteBook);
 bookRouter.route("/issueBookToUser").post(auth,isUser,issueBookToUser);
 bookRouter.route("/returnBookToUser").put(auth,isUser,returnBook);
+
 
 //Raj
 export { bookRouter };

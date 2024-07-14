@@ -6,9 +6,10 @@ import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
 import { bookRouter } from "./router/bookRouter.js";
+import router from "./router/userRouter.js";
+import librarianRoute from "./router/librarianRouter.js";
+import adminRoute from "./router/adminRouter.js";
 
-
-import router from "./router/userRouter.js"
 connect();
 const app = express();
 app.use(express.json());
@@ -25,6 +26,9 @@ app.use(
 
 app.use("/api/book", bookRouter);
 app.use("/api/user", router);
+
+app.use("/api/admin", adminRoute);
+app.use("/api/librarian", librarianRoute);
 
 const port = process.env.PORT || 5555;
 app.listen(port, () => {
