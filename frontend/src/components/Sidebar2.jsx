@@ -8,9 +8,9 @@ const Sidebar2 = () => {
   return (
     <div className=" w-56 bg-pure-greys-5 h-screen hidden md:flex">
       <Box anchor="left">
-        <div className=" w-56 py-10 sm:py-20">
+        <div className=" w-56 py-10 sm:py-20 flex flex-col justify-center items-center">
           <h1 className=" my-4 text-lg py-2 px-4 w-44 flex justify-center bg-pure-greys-50 text-black rounded-xl cursor-pointer">
-            <Link to={"/"}>Home</Link>
+            <Link to={"/books"}>Home</Link>
           </h1>
           <h1 className=" my-4 text-lg py-2 px-4 w-44 flex justify-center bg-pure-greys-50 text-black rounded-xl cursor-pointer">
             Trendings

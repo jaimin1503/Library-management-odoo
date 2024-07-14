@@ -3,13 +3,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import setUser from "../redux/slices/authSlice";
 import "./Styles.css";
 import Navbar from "../components/Navbar";
+import useDispatch from "react-redux";
 
 export default function Login() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +31,7 @@ export default function Login() {
       );
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
-        navigate("/");
+        navigate("/books");
       } else {
         setError("An error occurred. Please try again later.");
         toast.error("An error occurred. Please try again.", {
@@ -36,6 +39,7 @@ export default function Login() {
           position: "top-right",
         });
       }
+      dispatch(setUser(res.data.user));
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
