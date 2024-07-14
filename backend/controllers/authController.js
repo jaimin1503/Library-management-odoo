@@ -96,7 +96,7 @@ export const login = async (req, res) => {
 
     // Find user with provided email
     const user = await User.findOne({ email }).populate("profile").exec();
-
+    // .populate("bookIssue").populate("bookWishList").populate("bookDue")
     // If user not found with provided email
     if (!user) {
       // Return 401 Unauthorized status code with error message
