@@ -49,11 +49,12 @@ const userSchema=new mongoose.Schema({
         }
     ],
     
-    bookHistry:[
+    bookHistry: [
         {
-            type:mongoose.Schema.Types.ObjectId,
-            duedate:Date.now()+15 * 24 * 60 * 60 * 1000,
-            ref:"Bookes"
+            bookId: { type: mongoose.Schema.Types.ObjectId, ref: "Books" },
+            issuedate: { type: Date },
+            duedate: { type: Date },
+            returnedDate:{type:Date}
         }
     ],
     bookWishList:[

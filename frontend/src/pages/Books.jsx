@@ -3,6 +3,9 @@ import BookCard from "../components/BookCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SearchCompo from "../components/SearchCompo";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
+import Sidebar2 from "../components/Sidebar2";
 
 export default function Books({ category }) {
   const [books, setBooks] = useState({});
@@ -13,26 +16,26 @@ export default function Books({ category }) {
       })
       .then((res) => {
         setBooks(res.data.data);
-        console.log(res.data.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div>
-      <div className="">
-        <SearchCompo />
-      </div>
-      <div className="component">{category}</div>
-      <div className="container p-4">
-        {books.length &&
-          books.map((book) => (
-            <div key={book._id}>
-              <Link to={`book/${book._id}`} className=" cursor-pointer">
-                <BookCard book={book} />
-              </Link>
-            </div>
-          ))}
+      <Navbar />
+      <div className=" flex">
+        <Sidebar2 />
+        <div className=" text-4xl font-medium p-4">Trendings</div>
+        <div className="container p-4">
+          {books.length > 0 &&
+            books.map((book) => (
+              <div key={book._id}>
+                <Link to={`/book/${book?.Id}`}>
+                  <BookCard book={book} />
+                </Link>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );

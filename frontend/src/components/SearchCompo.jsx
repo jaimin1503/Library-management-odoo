@@ -11,6 +11,8 @@ const SearchCompo = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  console.log(books[0]);
+
   useEffect(() => {
     // Fetch all users once when the component mounts
     setLoading(true);
@@ -41,10 +43,10 @@ const SearchCompo = () => {
 
   return (
     <>
-      <div className=" flex flex-col">
+      <div className=" flex flex-col ">
         <input
           type="text"
-          className="rounded-lg p-2 outline-none absolute pl-10 bg-pure-greys-25 my-2 w-full"
+          className="rounded-lg p-2 outline-none absolute pl-10 bg-pure-greys-25 my-2"
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Type to Search..."
@@ -56,7 +58,7 @@ const SearchCompo = () => {
           {!loading && (
             <div
               onClick={() => setInputValue("")}
-              className="relative p-2 cursor-pointer float-right text-gray-500 my-2"
+              className="relative p-2 cursor-pointer ml-40 text-gray-500 my-2"
             >
               <Close />
             </div>
@@ -70,13 +72,15 @@ const SearchCompo = () => {
           )}
         </div>
       </div>
-      <ul className="mt-2 mx-5">
-        {suggestions.map((book) => (
-          <Link to={`/book/${book._id}`}>
-            <BookCard book={book} />
-          </Link>
-        ))}
-      </ul>
+      {inputValue && suggestions.length && (
+        <ul className=" top-0 z-50 bg-pure-greys-100 w-1/2 p-5 mx-5 absolute ">
+          {suggestions.map((book) => (
+            <Link to={`/book/${book.Id}`}>
+              <BookCard book={book} />
+            </Link>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
