@@ -15,11 +15,11 @@ const SearchCompo = () => {
     // Fetch all users once when the component mounts
     setLoading(true);
     axios
-      .get(`${import.meta.env.VITE_BASE_URL}/book/getAllBooks`, {
+      .get(`${import.meta.env.VITE_BASE_URL}/api/book/getBooks`, {
         withCredentials: true,
       })
       .then((res) => {
-        setBooks(res.data.allbooks);
+        setBooks(res.data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -34,8 +34,7 @@ const SearchCompo = () => {
 
     // Filter users locally instead of making an API call on each change
     const filteredBooks = books.filter(
-      (book) =>
-        value && book.title.toLowerCase().includes(value.toLowerCase())
+      (book) => value && book.Title.toLowerCase().includes(value.toLowerCase())
     );
     setSuggestions(filteredBooks);
   };

@@ -12,7 +12,9 @@ export default function Signup() {
     lastName: "",
     userName: "",
     email: "",
+    contactNumber: "",
     password: "",
+    confirmPassword: "",
     location: "",
   });
   const [error, setError] = useState("");
@@ -57,6 +59,14 @@ export default function Signup() {
               value={formData.lastName || ""}
             />
             <input
+              type="text"
+              className="input-field  "
+              placeholder="Username"
+              onChange={handleChange}
+              name="userName"
+              value={formData.userName || ""}
+            />
+            <input
               type="email"
               className="input-field  "
               placeholder="Email"
@@ -67,10 +77,10 @@ export default function Signup() {
             <input
               type="text"
               className="input-field  "
-              placeholder="Username"
+              placeholder="Contact no."
               onChange={handleChange}
-              name="userName"
-              value={formData.userName || ""}
+              name="contactNumber"
+              value={formData.contactNumber || ""}
             />
             <input
               type="password"
@@ -79,6 +89,14 @@ export default function Signup() {
               onChange={handleChange}
               name="password"
               value={formData.password || ""}
+            />
+            <input
+              type="password"
+              className="input-field  "
+              placeholder="Confirm Password"
+              onChange={handleChange}
+              name="confirmPassword"
+              value={formData.confirmPassword || ""}
             />
             <button type="submit" className="submit-button hover:bg-blue-600">
               Continue
