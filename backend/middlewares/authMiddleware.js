@@ -37,10 +37,12 @@ export const auth = (req, res, next) => {
     });
   }
 };
-export const isStudent=(req,res,next)=>{
+export const isUser=(req,res,next)=>{
   try{
+    console.log("role",req.user)
     const role=req.user.accountType
-    if(role==="Student"){
+    console.log("role",role)
+    if(role==="user"){
         next();
     }else{
       return res.status(200).json({
@@ -51,7 +53,7 @@ export const isStudent=(req,res,next)=>{
   }catch(error){
     res.status(500).json({
       success:false,
-      message:"something went in isStudent middleware",
+      message:"something went in isUser middleware",
       error:error
     })
   }
@@ -76,11 +78,11 @@ export const isAdmin=(req,res,next)=>{
     })
   }
 }
-export const isInstructer=(req,res,next)=>{
+export const isLibrarian=(req,res,next)=>{
   try{
     console.log("dghfduchhjh",req.user.accountType)
     const role=req.user.accountType
-    if(role==="Instructor"){
+    if(role==="librarian"){
         next();
         console.log("auth middware is innnjnjn");
 
