@@ -39,7 +39,7 @@ export const addBook = asyncHandler(async(req, res) => {
         const savedBook = await newBook.save();
         console.log("Book created successfully");
 
-        res.status(201).json(savedBook);
+        res.status(201).json({data:savedBook, success: true,message:"add book successfully"});
         // res.status(200).json(patient);
     });
 })
@@ -57,7 +57,7 @@ export const fatchBooks = async (req, res) => {
             Genre: book.Genre,
             Remain : book.Quantity - book.BorrowedBy.length
         }));
-        res.status(200).json({data:result,message:"all book fatch successfully"});
+        res.status(200).json({ success: true,data:result,message:"all book fatch successfully"});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -73,7 +73,11 @@ export const fatchBook = async (req, res) => {
             return res.status(404).json({ message: 'Book not found' });
         }
 
-        res.json(book);
+        res.status(200).json({
+            data:book,
+            success: true,
+            message:"fatch bokk completed"
+    });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
