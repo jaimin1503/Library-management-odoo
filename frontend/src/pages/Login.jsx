@@ -29,10 +29,7 @@ export default function Login() {
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
         navigate("/");
-        toast.success(`Welcome ${formData.identifier}`, {
-          duration: 4000,
-          position: "top-right",
-        });
+        
       } else {
         setError("An error occurred. Please try again later.");
         toast.error("An error occurred. Please try again.", {

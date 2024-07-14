@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import SearchCompo from "../components/SearchCompo";
 
-export default function Books() {
+export default function Books({ category }) {
   const [books, setBooks] = useState({});
   useEffect(() => {
     axios
@@ -23,7 +23,7 @@ export default function Books() {
       <div className="">
         <SearchCompo />
       </div>
-      <div className="component">Books</div>
+      <div className="component">{category}</div>
       <div className="container p-4">
         {books.length &&
           books.map((book) => (

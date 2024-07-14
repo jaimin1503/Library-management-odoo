@@ -18,11 +18,8 @@ export default function BookCard({ book }) {
           </h1>
 
           <div className="text-sm text-gray-700">{book?.Author}</div>
-
-          <p className=" text-pure-greys-500 mt-2 text-sm">
-            {book?.description
-              ? `${book?.Description.slice(0, 115)}...`
-              : "No description available"}
+          <p className=" text-sm text-pure-greys-500">
+            Only {book.Remain} books left
           </p>
         </div>
       </div>
