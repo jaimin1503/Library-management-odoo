@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BookCard from "../components/BookCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SearchCompo from "../components/SearchCompo";
 
 export default function Books() {
   const [books, setBooks] = useState({});
@@ -33,6 +34,9 @@ export default function Books() {
 
   return (
     <div>
+      <div className="">
+        <SearchCompo />
+      </div>
       <div className="component">Books</div>
       <div className="container p-4">
         {/* {books.map((book) => (
