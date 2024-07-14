@@ -34,7 +34,9 @@ export default function Signup() {
 
   return (
     <>
-      <Navbar />
+      <nav>
+        <h1 className=" font-bold text-3xl m-4">Page Turners</h1>
+      </nav>
       <div className="w-full h-full flex justify-center items-center sm:px-10 py-10 md:py-10">
         <div className="w-full lg:w-1/2 h-auto md:border border-blue-300 rounded-2xl px-5 sm:px-20 py-5">
           <h1 className="text-3xl sm:text-4xl font-medium text-center mb-5">

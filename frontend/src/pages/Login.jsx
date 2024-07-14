@@ -29,7 +29,6 @@ export default function Login() {
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
         navigate("/");
-        
       } else {
         setError("An error occurred. Please try again later.");
         toast.error("An error occurred. Please try again.", {
@@ -49,7 +48,9 @@ export default function Login() {
 
   return (
     <>
-      <Navbar />
+      <nav>
+        <h1 className=" font-bold text-3xl m-4">Page Turners</h1>
+      </nav>
       <div className="  w-fit mx-auto md:border-2 max-w-lg border-blue-300 rounded-2xl p-10 mt-20">
         <h1 className="text-3xl sm:text-4xl font-medium text-center mb-10">
           Login to ResumeHub

@@ -91,7 +91,6 @@ import { Navigate } from "react-router-dom";
 function App() {
   return (
     <div className="w-screen min-h-screen">
-      <Navbar />
       <Routes>
         {/* <Route element={<Layout />}> */}
         <Route path="/" element={<Home />} />
