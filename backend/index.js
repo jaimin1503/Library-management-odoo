@@ -4,7 +4,7 @@ import connect from "./utils/db.js";
 import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
-
+import router from "./router/userRouter.js"
 connect();
 const app = express();
 app.use(express.json());
@@ -16,7 +16,7 @@ app.use(
     credentials: true,
   })
 );
-
+app.use("/api/user", router);
 const port = process.env.PORT || 5555;
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
