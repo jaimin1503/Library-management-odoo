@@ -11,8 +11,6 @@ const SearchCompo = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log(books[0]);
-
   useEffect(() => {
     // Fetch all users once when the component mounts
     setLoading(true);

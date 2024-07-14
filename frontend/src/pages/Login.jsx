@@ -3,10 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
-import setUser from "../redux/slices/authSlice";
+import { setUser } from "../redux/slices/authSlice";
 import "./Styles.css";
 import Navbar from "../components/Navbar";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const [formData, setFormData] = useState({});

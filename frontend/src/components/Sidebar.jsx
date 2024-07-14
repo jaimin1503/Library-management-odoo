@@ -8,14 +8,19 @@ import {
   IconButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
   return (
     <div>
       <div>
@@ -40,6 +45,12 @@ const Sidebar = () => {
             )
           )}
         </div>
+        <button
+          onClick={handleLogout}
+          className=" py-2 px-4 bg-red-100 text-white rounded-xl mx-4"
+        >
+          Logout
+        </button>
       </Drawer>
     </div>
   );
