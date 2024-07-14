@@ -22,7 +22,7 @@ export default function Login() {
     // Send a POST request to the server
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/user/login`,
+        `${import.meta.env.VITE_BASE_URL}/api/user/login`,
         formData,
         { withCredentials: true }
       );
@@ -61,10 +61,10 @@ export default function Login() {
         <form onSubmit={handleSubmit}>
           <input
             className="input-field"
-            placeholder="Username or Email"
+            placeholder="Email"
             onChange={handleChange}
-            name="identifier"
-            value={formData.identifier || ""}
+            name="email"
+            value={formData.email || ""}
             type="text"
           />
           <input
