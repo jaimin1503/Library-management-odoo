@@ -22,6 +22,7 @@ export default function BookCard({ book }) {
             Only {book.Remain} books left
           </p>
         </div>
+        <button className="py-2 px-4 bg-pure-greys-100 rounded-xl ">issue</button>
       </div>
     </div>
   );
